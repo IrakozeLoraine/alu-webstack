@@ -33,18 +33,18 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend oreste-frontend-http
+frontend loraine-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend oreste-backend
+        default_backend loraine-backend
 
-frontend oreste-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.abizeraoreste.tech.pem
+frontend loraine-frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.irakozeloraine.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	default_backend oreste-backend
+	default_backend loraine-backend
 
-backend oreste-backend
+backend loraine-backend
         balance roundrobin
-        server 6238-web-01 54.196.216.8:80 check
-        server 6238-web-02 98.80.15.59:80 check
+        server 6203-web-01 54.163.192.221 check
+        server 6203-web-02 18.234.175.44 check
